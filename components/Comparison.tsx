@@ -11,6 +11,14 @@ export default function Comparison() {
       highlight: true
     },
     {
+      feature: "Intelligent Dual-Router (NeMo Switchyard + Bifrost)",
+      billama: "Dual-Engine (<100µs)",
+      hyperscaler: "Locked / Manual",
+      apiAggregator: "Basic Round-Robin",
+      rawDepin: false,
+      highlight: true
+    },
+    {
       feature: "Drop-in OpenAI SDK Compatibility",
       billama: true,
       hyperscaler: false, // Proprietary SDK required

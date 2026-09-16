@@ -3,6 +3,10 @@ import { ChevronDown, HelpCircle } from "lucide-react";
 export default function Faq() {
   const faqs = [
     {
+      q: "What is the NVIDIA NeMo Switchyard + Bifrost Dual-Router in Billama 3.0?",
+      a: "Billama 3.0 couples NVIDIA NeMo Switchyard (Rust-based intelligent model router) with Bifrost (Go-based ultra-fast token router). Switchyard acts as the brain, evaluating prompt complexity and quality feedback to dynamically select the optimal model tier (cascading simple queries to lightweight 3B models and escalating complex reasoning to frontier 70B models), saving an extra 40–70% in token expenditure. Bifrost then acts as the high-performance transport layer, delivering sub-100µs proxying, health checks, and adaptive load balancing across warm nodes."
+    },
+    {
       q: "What makes Billama different from centralized AI clouds like AWS Bedrock or OpenAI?",
       a: "Billama is a two-sided decentralized GPU grid. Instead of paying 75%+ enterprise markups to hyperscalers for datacenter overhead, requests are dynamically routed to verified nodes running Ollama or vLLM. You get 100% drop-in OpenAI API compatibility at 60–80% lower cost, while hardware providers earn an honest 82% net revenue share."
     },

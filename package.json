@@ -1,13 +1,23 @@
 {
   "name": "billamadotnet",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "private": true,
-  "description": "Billama.net - Official Static Website for Billama Decentralized GPU Marketplace & AI Token Utility Grid",
+  "description": "Billama.net - Official Static Website for Billama 3.0 Decentralized GPU Marketplace & AI Token Utility Grid",
   "scripts": {
     "dev": "next dev",
+    "dev:clean": "rm -rf .next && next dev",
+    "dev:turbo": "next dev --turbopack",
+    "dev:3000": "next dev -p 3000",
+    "dev:3001": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
-    "lint": "tsc --noEmit"
+    "build:clean": "rm -rf .next out && next build",
+    "clean": "rm -rf .next out",
+    "clean:all": "rm -rf .next out node_modules && pnpm install",
+    "preview": "npm run build && npx serve out",
+    "serve": "npx serve out -p 3001",
+    "start": "npx serve out -p 3001",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "clsx": "^2.1.1",

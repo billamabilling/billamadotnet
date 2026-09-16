@@ -28,9 +28,9 @@ export default function Architecture() {
     },
     {
       num: 2,
-      title: "2. Smart Routing & Canary Dispatch",
-      subtitle: "Latency-Aware Node Selection & 2% Audits",
-      desc: "The router evaluates connected nodes based on active model cache in VRAM, thermal headroom, and latency score. 2% of requests are transparently duplicated across consensus nodes to audit against malicious output."
+      title: "2. NeMo Switchyard + Bifrost Dual-Router",
+      subtitle: "Intelligent Model Cascade & <100µs Transport",
+      desc: "NVIDIA NeMo Switchyard evaluates prompt complexity to route requests to the optimal model tier (e.g. lightweight 3B vs frontier 70B). Bifrost then executes sub-100µs transport, adaptive load balancing, and health checks across warm GPU nodes, with 2% consensus canary audits."
     },
     {
       num: 3,
@@ -69,11 +69,18 @@ export default function Architecture() {
             {/* Steps bar */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
               {steps.map((step) => (
-                <button
+                <div
                   key={step.num}
-                  type="button"
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setActiveStep(step.num)}
-                  className={`p-4 rounded-xl border text-left transition-all ${
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActiveStep(step.num);
+                    }
+                  }}
+                  className={`p-4 rounded-xl border text-left transition-all cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ${
                     activeStep === step.num
                       ? "bg-cyan-950/50 border-cyan-500 shadow-md shadow-cyan-950/50 scale-[1.02]"
                       : "bg-slate-900/40 border-slate-800 hover:border-slate-700 text-slate-400"
@@ -87,7 +94,7 @@ export default function Architecture() {
                   </div>
                   <div className="font-bold text-sm text-white">{step.title}</div>
                   <div className="text-[11px] text-slate-400 truncate mt-0.5">{step.subtitle}</div>
-                </button>
+                </div>
               ))}
             </div>
 
@@ -119,9 +126,23 @@ export default function Architecture() {
                                              │ HTTP/2 WebStream
                                              ▼
                       ┌──────────────────────────────────────────────┐
-                      │          Billama Global Edge Gateway         │
+                      │        Billama 3.0 Global Edge Gateway       │
                       │  • Auth Token Check     • PostgreSQL Ledger  │
-                      │  • FreeIPA LDAP Sync    • Smart Node Routing │
+                      │  • FreeIPA LDAP Sync    • Pre-Flight Balance │
+                      └──────────────────────┬───────────────────────┘
+                                             │
+                                             ▼
+                      ┌──────────────────────────────────────────────┐
+                      │      NVIDIA NeMo Switchyard (Model Router)   │
+                      │  • Task Complexity Scan • Cascade / Judge    │
+                      │  • Dynamic Model Choice • Cost-Optimization  │
+                      └──────────────────────┬───────────────────────┘
+                                             │
+                                             ▼
+                      ┌──────────────────────────────────────────────┐
+                      │      Bifrost High-Speed Gateway (<100µs)     │
+                      │  • Adaptive Load Balancer• Health Checks     │
+                      │  • Cluster Mode (Leader) • Guardrails/PII    │
                       └──────────────────────┬───────────────────────┘
                                              │
              ┌───────────────────────────────┼───────────────────────────────┐

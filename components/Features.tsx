@@ -62,6 +62,16 @@ export default function Features() {
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
                 <div>
+                  <strong className="text-white text-sm block">NVIDIA NeMo Switchyard + Bifrost Dual-Router</strong>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Intelligent model cascading downscales simple queries to lightweight models (<code className="text-cyan-300">llama3.2:3b</code>) and escalates complex reasoning to frontier models (<code className="text-cyan-300">llama3.3:70b</code>), backed by Bifrost&apos;s &lt;100µs transport.
+                  </p>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+                <div>
                   <strong className="text-white text-sm block">100% OpenAI &amp; Ollama Wire Protocol</strong>
                   <p className="text-xs text-slate-400 mt-0.5">
                     Full support for <code className="text-cyan-300">/v1/chat/completions</code>, <code className="text-cyan-300">/api/chat</code>, <code className="text-cyan-300">/v1/embeddings</code>, and streaming tool calls.
@@ -185,13 +195,26 @@ export default function Features() {
 
         {/* 6 Supporting Feature Cards */}
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
+          <div className="p-6 rounded-2xl bg-slate-900/60 border border-cyan-500/30 hover:border-cyan-400/60 transition-all shadow-lg shadow-cyan-950/20">
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4">
-              <ShieldCheck className="w-5 h-5" />
+              <Zap className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white mb-1.5">Anti-Cheating Verification</h4>
+            <div className="flex items-center gap-2 mb-1.5">
+              <h4 className="text-base font-bold text-white">NeMo Switchyard Dual-Router</h4>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 font-mono">v3.0</span>
+            </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Consensus spot-checks and deterministic tile hash audits guarantee uncompromised accuracy and honest token generation.
+              Intelligent model cascading downscales simple queries to efficient models and escalates reasoning to frontier models, with Bifrost handling &lt;100µs transport.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
+              <Layers className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-white mb-1.5">Zero-Idle Waterfall™</h4>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Automated 3-tier cascade switches workloads in sub-100ms from LLM tokens to 3D RenderGrid and ZK-proofs so hardware never sits at $0.
             </p>
           </div>
 
@@ -201,17 +224,7 @@ export default function Features() {
             </div>
             <h4 className="text-base font-bold text-white mb-1.5">RenderGrid 3D Dispatch</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Headless Blender and universal batch compute dispatches complex 3D rendering jobs across distributed consumer GPUs.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
-              <Coins className="w-5 h-5" />
-            </div>
-            <h4 className="text-base font-bold text-white mb-1.5">Transparent 18% Take Rate</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Unlike cloud monopolies taking 75%+ margins, Billama pays 82% of every dollar straight to hardware providers.
+              Headless Blender and universal batch compute dispatches complex 3D rendering jobs across distributed consumer GPUs with tile hash verification.
             </p>
           </div>
 
@@ -219,19 +232,19 @@ export default function Features() {
             <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4">
               <Users className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white mb-1.5">Multi-Tenant Organizations</h4>
+            <h4 className="text-base font-bold text-white mb-1.5">Enterprise LDAP &amp; FreeIPA</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Hierarchical team governance with subordinate user limits, custom budgets, and LDAP directory auto-sync.
+              Hierarchical team governance with subordinate user limits, monthly budget caps, and native Active Directory/FreeIPA LDAP sync.
             </p>
           </div>
 
           <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
             <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-4">
-              <Workflow className="w-5 h-5" />
+              <ShieldCheck className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white mb-1.5">Kubernetes &amp; Helm Native</h4>
+            <h4 className="text-base font-bold text-white mb-1.5">Consensus Canary Audits</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Production-ready Helm charts and FreeIPA operator manifests allow private cluster deployments in minutes.
+              Randomized 2% canary audits duplicate inference prompts against consensus validators to eliminate poisoning, cheating, and hallucinations.
             </p>
           </div>
 
@@ -239,9 +252,9 @@ export default function Features() {
             <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
               <CreditCard className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white mb-1.5">Multi-Rail Payouts</h4>
+            <h4 className="text-base font-bold text-white mb-1.5">82% Share &amp; Multi-Rail Payouts</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Instant automated liquidity via Stripe Connect ACH, USDC on Solana &amp; Polygon, or zero-fee compute reinvestment.
+              Transparent 18% take rate. Hardware providers withdraw 82% net earnings via Stripe ACH, USDC stablecoins, or 0%-fee compute credits.
             </p>
           </div>
         </div>

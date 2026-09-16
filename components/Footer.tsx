@@ -78,8 +78,8 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
-          <div>
-            © {new Date().getFullYear()} Billama Project. MIT Licensed.
+          <div suppressHydrationWarning>
+            © 2026 Billama Project. MIT Licensed.
           </div>
           <div className="flex items-center gap-6">
             <a 

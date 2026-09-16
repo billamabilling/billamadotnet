@@ -11,10 +11,11 @@ import {
   ShieldCheck, 
   FileCode, 
   ArrowRight,
-  Server
+  Server,
+  Zap
 } from "lucide-react";
 
-type DocSection = "openai" | "ollama" | "node" | "helm" | "ldap";
+type DocSection = "openai" | "ollama" | "router" | "node" | "helm" | "ldap";
 
 export default function InteractiveDocs() {
   const [activeDoc, setActiveDoc] = useState<DocSection>("openai");
@@ -69,6 +70,19 @@ export default function InteractiveDocs() {
             >
               <Terminal className="w-4 h-4" />
               <span>Native Ollama API</span>
+            </button>
+
+            <button
+              onClick={() => setActiveDoc("router")}
+              className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
+                activeDoc === "router"
+                  ? "border-cyan-400 text-cyan-300 bg-slate-900/50"
+                  : "border-transparent text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <Zap className="w-4 h-4 text-cyan-400" />
+              <span>Switchyard Dual-Router</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono">v3.0</span>
             </button>
 
             <button
@@ -220,6 +234,52 @@ curl https://api.billama.net/api/embeddings \\
     "model": "nomic-embed-text",
     "prompt": "The sky is blue because of Rayleigh scattering"
   }'`}</pre>
+                </div>
+              </div>
+            )}
+
+            {activeDoc === "router" && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-bold text-white">NVIDIA NeMo Switchyard + Bifrost Dual-Routing</h3>
+                    <span className="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">v3.0 Live</span>
+                  </div>
+                  <button
+                    onClick={() => copyCode("router", `# Example: Test Switchyard dynamic cascading with curl
+curl -i https://api.billama.net/v1/chat/completions \\
+  -H "Authorization: Bearer blm_live_your_key" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "auto",
+    "messages": [{"role": "user", "content": "Explain zero-idle GPU yields."}]
+  }'`)}
+                    className="inline-flex items-center gap-1 text-xs font-mono bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    {copiedKey === "router" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedKey === "router" ? "Copied" : "Copy Code"}</span>
+                  </button>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Billama 3.0 couples <strong className="text-white">NVIDIA NeMo Switchyard</strong> for intelligent model selection (cascade tiers from lightweight 3B to frontier 70B) with <strong className="text-white">Bifrost</strong> for sub-100µs transport and adaptive load balancing. Inspect the returned telemetry headers:
+                </p>
+                <div className="p-4 rounded-xl bg-[#060911] border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto">
+                  <pre>{`# 1. Dispatch request with model: "auto" or explicit model name
+curl -i https://api.billama.net/v1/chat/completions \\
+  -H "Authorization: Bearer blm_live_your_key" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model": "auto", "messages": [{"role": "user", "content": "Explain zero-idle GPU yields."}]}'
+
+# 2. Inspect real-time response headers stamped by Billama 3.0 Dual-Router:
+HTTP/1.1 200 OK
+X-Billama-Route-Target: SWITCHYARD_BIFROST
+X-Billama-Router-Engine: NeMo Switchyard → Bifrost (cascade)
+X-Billama-Switchyard-Model: llama3.2:3b
+X-Billama-Switchyard-Original-Model: llama3.3:70b
+X-Billama-Switchyard-Strategy: cascade
+X-Billama-Switchyard-Confidence: 0.94
+X-Billama-Switchyard-Cost-Savings: 85%
+X-Billama-Node-Id: bifrost-adaptive-lb-pod-2`}</pre>
                 </div>
               </div>
             )}

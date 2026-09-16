@@ -21,16 +21,17 @@ export default function Hero() {
   const [copied, setCopied] = useState(false);
 
   const snippets = {
-    openai: `# 100% Drop-in replacement for OpenAI SDK
+    openai: `# Billama 3.0: Intelligent NeMo Switchyard + Bifrost Dual-Router
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://api.billama.net/v1",  # Billama Utility Grid Gateway
+    base_url="https://api.billama.net/v1",  # Billama 3.0 Dual-Router Gateway
     api_key="blm_live_79f3b190c4e7..."     # Real-time metered API Key
 )
 
+# Switchyard intelligently picks optimal model tier; Bifrost handles <100µs transport
 response = client.chat.completions.create(
-    model="llama3.3:70b",
+    model="llama3.3:70b",  # or "auto" for dynamic Switchyard cascading
     messages=[{"role": "user", "content": "Explain zero-idle GPU yields."}],
     stream=True
 )
@@ -81,8 +82,8 @@ helm upgrade --install billama billama/billama \\
         <div className="flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-300 text-xs font-medium backdrop-blur-md mb-6 shadow-sm hover:border-cyan-400/50 transition-colors">
             <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
-            <span className="font-semibold text-cyan-200">Billama 2.0 Live:</span>
-            <span>Zero-Idle Waterfall Guarantee &amp; 82% Supplier Share</span>
+            <span className="font-semibold text-cyan-200">Billama 3.0 Live:</span>
+            <span>NVIDIA NeMo Switchyard + Bifrost Dual-Router &amp; 82% Share</span>
             <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
           </div>
 
@@ -96,7 +97,7 @@ helm upgrade --install billama billama/billama \\
 
           {/* Subtitle */}
           <p className="mt-6 max-w-2xl text-base sm:text-lg text-slate-300 font-normal leading-relaxed">
-            Cut AI inference costs by <span className="text-cyan-300 font-semibold">60–80%</span> with drop-in OpenAI &amp; Ollama compatibility. Monetize idle consumer GPUs (RTX 4090/5090, Apple Silicon) and enterprise racks with the guaranteed <span className="text-indigo-300 font-semibold">Zero-Idle Waterfall</span>.
+            Cut AI inference costs by <span className="text-cyan-300 font-semibold">60–80%</span> with <span className="text-white font-semibold">NVIDIA NeMo Switchyard + Bifrost</span> intelligent dual-routing. Monetize idle consumer GPUs (RTX 4090/5090, Apple Silicon) and enterprise racks with the guaranteed <span className="text-indigo-300 font-semibold">Zero-Idle Waterfall</span>.
           </p>
 
           {/* Action CTAs */}

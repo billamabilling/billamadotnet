@@ -86,10 +86,17 @@ export default function ZeroIdleWaterfall() {
           {/* Left: 3 Tiers Flow */}
           <div className="lg:col-span-6 flex flex-col gap-4">
             {/* Tier 1 Card */}
-            <button
-              type="button"
+            <div
+              role="button"
+              tabIndex={0}
               onClick={() => setSelectedTier(1)}
-              className={`w-full text-left p-6 rounded-2xl border transition-all relative overflow-hidden ${
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedTier(1);
+                }
+              }}
+              className={`w-full text-left p-6 rounded-2xl border transition-all relative overflow-hidden cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ${
                 selectedTier === 1 
                   ? "bg-slate-900/90 border-cyan-500 shadow-xl shadow-cyan-950/50 scale-[1.02]" 
                   : "bg-slate-900/40 border-slate-800 hover:border-slate-700 opacity-80"
@@ -116,7 +123,7 @@ export default function ZeroIdleWaterfall() {
                 <span>Latency &lt; 35ms</span>
                 <span className="text-emerald-400 font-semibold">$0.45 – $1.40/hr</span>
               </div>
-            </button>
+            </div>
 
             {/* Cascade Arrow */}
             <div className="flex justify-center -my-2 text-slate-600">
@@ -124,10 +131,17 @@ export default function ZeroIdleWaterfall() {
             </div>
 
             {/* Tier 2 Card */}
-            <button
-              type="button"
+            <div
+              role="button"
+              tabIndex={0}
               onClick={() => setSelectedTier(2)}
-              className={`w-full text-left p-6 rounded-2xl border transition-all relative overflow-hidden ${
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedTier(2);
+                }
+              }}
+              className={`w-full text-left p-6 rounded-2xl border transition-all relative overflow-hidden cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 ${
                 selectedTier === 2 
                   ? "bg-slate-900/90 border-purple-500 shadow-xl shadow-purple-950/50 scale-[1.02]" 
                   : "bg-slate-900/40 border-slate-800 hover:border-slate-700 opacity-80"
@@ -154,7 +168,7 @@ export default function ZeroIdleWaterfall() {
                 <span>Chunked 10s-5m</span>
                 <span className="text-emerald-400 font-semibold">$0.30 – $0.75/hr</span>
               </div>
-            </button>
+            </div>
 
             {/* Cascade Arrow */}
             <div className="flex justify-center -my-2 text-slate-600">
@@ -162,10 +176,17 @@ export default function ZeroIdleWaterfall() {
             </div>
 
             {/* Tier 3 Card */}
-            <button
-              type="button"
+            <div
+              role="button"
+              tabIndex={0}
               onClick={() => setSelectedTier(3)}
-              className={`w-full text-left p-6 rounded-2xl border transition-all relative overflow-hidden ${
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedTier(3);
+                }
+              }}
+              className={`w-full text-left p-6 rounded-2xl border transition-all relative overflow-hidden cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${
                 selectedTier === 3 
                   ? "bg-slate-900/90 border-emerald-500 shadow-xl shadow-emerald-950/50 scale-[1.02]" 
                   : "bg-slate-900/40 border-slate-800 hover:border-slate-700 opacity-80"
@@ -192,7 +213,7 @@ export default function ZeroIdleWaterfall() {
                 <span>Preemptible &lt; 100ms</span>
                 <span className="text-emerald-400 font-semibold">$0.15 – $0.35/hr</span>
               </div>
-            </button>
+            </div>
           </div>
 
           {/* Right: Tier Detailed Inspector */}

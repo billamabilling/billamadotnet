@@ -136,11 +136,11 @@ export default function Calculator() {
                             : "bg-slate-900/40 border-slate-800 text-slate-400 hover:border-slate-700"
                         }`}
                       >
-                        <div className="font-semibold text-sm text-white">{m.name}</div>
-                        <div className="text-xs text-slate-400 mt-0.5">{m.params}</div>
-                        <div className="text-xs font-mono text-cyan-400 mt-1">
+                        <span className="font-semibold text-sm text-white block">{m.name}</span>
+                        <span className="text-xs text-slate-400 mt-0.5 block">{m.params}</span>
+                        <span className="text-xs font-mono text-cyan-400 mt-1 block">
                           ${m.billamaPerM.toFixed(2)} / 1M tokens
-                        </div>
+                        </span>
                       </button>
                     ))}
                   </div>
@@ -240,11 +240,11 @@ export default function Calculator() {
                             : "bg-slate-900/40 border-slate-800 text-slate-400 hover:border-slate-700"
                         }`}
                       >
-                        <div className="font-semibold text-sm text-white">{g.name}</div>
-                        <div className="text-xs text-slate-400 mt-0.5">{g.vram}</div>
-                        <div className="text-xs font-mono text-emerald-400 mt-1">
+                        <span className="font-semibold text-sm text-white block">{g.name}</span>
+                        <span className="text-xs text-slate-400 mt-0.5 block">{g.vram}</span>
+                        <span className="text-xs font-mono text-emerald-400 mt-1 block">
                           ~${g.hourlyBlended.toFixed(2)}/hr blended
-                        </div>
+                        </span>
                       </button>
                     ))}
                   </div>
