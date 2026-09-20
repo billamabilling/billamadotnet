@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import SnowcatTracker from "@/components/SnowcatTracker";
 
 export const metadata: Metadata = {
   title: "Billama 3.0 — Decentralized GPU Marketplace & AI Token Utility Grid",
@@ -86,6 +87,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] antialiased selection:bg-cyan-500/30 selection:text-cyan-200" suppressHydrationWarning>
         <ThemeProvider>
+          <SnowcatTracker />
           <div className="fixed inset-0 bg-grid-pattern pointer-events-none opacity-40 z-0" />
           <div className="fixed inset-0 bg-radial-gradient pointer-events-none z-0" />
           <div className="relative z-10 flex flex-col min-h-screen">

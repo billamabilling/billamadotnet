@@ -1,4 +1,7 @@
+"use client";
+
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { trackFaqToggle } from "@/lib/snowcat/tracker";
 
 export default function Faq() {
   const faqs = [
@@ -53,6 +56,12 @@ export default function Faq() {
             <details
               key={idx}
               name="faq"
+              onToggle={(e) => {
+                trackFaqToggle({
+                  question: faq.q,
+                  isOpen: e.currentTarget.open,
+                });
+              }}
               className="group glass-panel rounded-2xl border border-slate-800/80 bg-[#090e1b]/90 p-5 transition-all open:border-cyan-500/40"
             >
               <summary className="flex cursor-pointer items-center justify-between font-semibold text-white text-base select-none focus:outline-none focus-visible:text-cyan-400">

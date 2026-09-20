@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { trackThemeSwitch } from "@/lib/snowcat/tracker";
 
 export interface ThemeInfo {
   id: string;
@@ -154,6 +155,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const setTheme = (id: string) => {
     const found = AVAILABLE_THEMES.find((t) => t.id === id);
     if (!found) return;
+
+    trackThemeSwitch({
+      newTheme: found.id,
+      previousTheme: theme,
+      mode: found.category,
+    });
 
     setThemeState(found.id);
     setModeState(found.category);
