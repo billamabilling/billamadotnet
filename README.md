@@ -58,3 +58,23 @@ Deployment is automated via [`.github/workflows/deploy.yml`](.github/workflows/d
 ### Enabling GitHub Pages in Repository Settings:
 1. Go to **Settings** > **Pages** in GitHub.
 2. Under **Build and deployment** > **Source**, select **GitHub Actions**.
+
+---
+
+## 📊 OpenSnowcat Behavioral Analytics & Sales Funnels
+
+Billama.net features first-party [OpenSnowcat](https://github.com/opensnowcat) behavioral tracking directly integrated via `@snowplow/browser-tracker` to capture visitor interest, campaign attribution, and conversion funnels to drive sales and inform engineering:
+
+### 1. Ingestion Pipeline & Privacy
+- **Collector Endpoint**: Configurable via `NEXT_PUBLIC_SNOWCAT_COLLECTOR_URL` (defaults to `https://app.billama.net/api/snowcat` or local proxy `http://localhost:3000/api/snowcat`).
+- **Ad-Blocker Resiliency**: Beacons route through first-party proxies to prevent signal loss.
+- **Cross-Domain Attribution**: Preserves anonymous visitor IDs (`blm_aid`) and UTM parameters (`utm_source`, `utm_medium`, `utm_campaign`) across marketing site and billing application boundaries.
+
+### 2. Tracked Interactions
+- **Page Views & Dwell Time**: Automatic route-change detection and activity ping heartbeats.
+- **Conversion CTAs**: Clicks on *"Connect GPU"*, *"Get API Key & Start"*, *"Start Inferencing"*, and GitHub links.
+- **Economics Simulator**: Live model selections, token volume sliders, GPU hardware choices, and projected cost savings.
+- **Developer Engagement**: Documentation tab switches, code snippet copy actions, and installation command copies.
+- **UI & Aesthetic Personalization**: Day/Night toggles and theme switches (Cyber, Matrix, Synthwave, Solar, Daylight, etc.).
+- **Friction Points**: FAQ expansion monitoring to identify pre-purchase objections.
+

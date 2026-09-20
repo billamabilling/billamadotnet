@@ -14,6 +14,7 @@ import {
   Server,
   Zap
 } from "lucide-react";
+import { trackDocsEngagement } from "@/lib/snowcat/tracker";
 
 type DocSection = "openai" | "ollama" | "router" | "node" | "helm" | "ldap";
 
@@ -24,6 +25,7 @@ export default function InteractiveDocs() {
   const copyCode = (key: string, code: string) => {
     navigator.clipboard.writeText(code);
     setCopiedKey(key);
+    trackDocsEngagement({ docSection: "interactive_docs", action: "code_copy", codeSnippetKey: key });
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
@@ -49,7 +51,10 @@ export default function InteractiveDocs() {
           {/* Docs Tabs */}
           <div className="flex border-b border-slate-800/80 bg-slate-950/60 overflow-x-auto text-xs font-mono">
             <button
-              onClick={() => setActiveDoc("openai")}
+              onClick={() => {
+                setActiveDoc("openai");
+                trackDocsEngagement({ docSection: "interactive_docs", action: "tab_switch", codeSnippetKey: "openai" });
+              }}
               className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeDoc === "openai"
                   ? "border-cyan-400 text-cyan-300 bg-slate-900/50"
@@ -61,7 +66,10 @@ export default function InteractiveDocs() {
             </button>
 
             <button
-              onClick={() => setActiveDoc("ollama")}
+              onClick={() => {
+                setActiveDoc("ollama");
+                trackDocsEngagement({ docSection: "interactive_docs", action: "tab_switch", codeSnippetKey: "ollama" });
+              }}
               className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeDoc === "ollama"
                   ? "border-cyan-400 text-cyan-300 bg-slate-900/50"
@@ -73,7 +81,10 @@ export default function InteractiveDocs() {
             </button>
 
             <button
-              onClick={() => setActiveDoc("router")}
+              onClick={() => {
+                setActiveDoc("router");
+                trackDocsEngagement({ docSection: "interactive_docs", action: "tab_switch", codeSnippetKey: "router" });
+              }}
               className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeDoc === "router"
                   ? "border-cyan-400 text-cyan-300 bg-slate-900/50"
@@ -86,7 +97,10 @@ export default function InteractiveDocs() {
             </button>
 
             <button
-              onClick={() => setActiveDoc("node")}
+              onClick={() => {
+                setActiveDoc("node");
+                trackDocsEngagement({ docSection: "interactive_docs", action: "tab_switch", codeSnippetKey: "node" });
+              }}
               className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeDoc === "node"
                   ? "border-cyan-400 text-cyan-300 bg-slate-900/50"
@@ -98,7 +112,10 @@ export default function InteractiveDocs() {
             </button>
 
             <button
-              onClick={() => setActiveDoc("helm")}
+              onClick={() => {
+                setActiveDoc("helm");
+                trackDocsEngagement({ docSection: "interactive_docs", action: "tab_switch", codeSnippetKey: "helm" });
+              }}
               className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeDoc === "helm"
                   ? "border-cyan-400 text-cyan-300 bg-slate-900/50"
@@ -110,7 +127,10 @@ export default function InteractiveDocs() {
             </button>
 
             <button
-              onClick={() => setActiveDoc("ldap")}
+              onClick={() => {
+                setActiveDoc("ldap");
+                trackDocsEngagement({ docSection: "interactive_docs", action: "tab_switch", codeSnippetKey: "ldap" });
+              }}
               className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeDoc === "ldap"
                   ? "border-cyan-400 text-cyan-300 bg-slate-900/50"

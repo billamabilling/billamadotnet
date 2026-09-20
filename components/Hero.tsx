@@ -15,6 +15,7 @@ import {
   Code2,
   Boxes
 } from "lucide-react";
+import { trackMarketingCta, trackDocsEngagement } from "@/lib/snowcat/tracker";
 
 export default function Hero() {
   const [activeTab, setActiveTab] = useState<"openai" | "ollama" | "node" | "helm">("openai");
@@ -72,6 +73,7 @@ helm upgrade --install billama billama/billama \\
   const handleCopy = () => {
     navigator.clipboard.writeText(snippets[activeTab]);
     setCopied(true);
+    trackDocsEngagement({ docSection: "hero_window", action: "code_copy", codeSnippetKey: activeTab });
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -104,6 +106,7 @@ helm upgrade --install billama billama/billama \\
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="#providers"
+              onClick={() => trackMarketingCta({ ctaName: "Connect GPU & Earn", location: "hero_primary", targetUrl: "#providers", ctaType: "connect_gpu" })}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-sm shadow-xl shadow-cyan-500/25 transition-all hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <Cpu className="w-4 h-4" />
@@ -112,6 +115,7 @@ helm upgrade --install billama billama/billama \\
 
             <Link
               href="#developers"
+              onClick={() => trackMarketingCta({ ctaName: "Start Inferencing (API)", location: "hero_secondary", targetUrl: "#developers", ctaType: "explore_api" })}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold text-sm transition-all hover:border-slate-600 focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <Terminal className="w-4 h-4 text-cyan-400" />
@@ -120,6 +124,7 @@ helm upgrade --install billama billama/billama \\
 
             <Link
               href="#calculator"
+              onClick={() => trackMarketingCta({ ctaName: "Calculate Savings & Yield", location: "hero_tertiary", targetUrl: "#calculator", ctaType: "calculator" })}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-slate-800 bg-slate-950/60 hover:bg-slate-900 text-slate-300 font-semibold text-sm transition-all focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <Coins className="w-4 h-4 text-amber-400" />
@@ -137,6 +142,8 @@ helm upgrade --install billama billama/billama \\
               onClick={() => {
                 navigator.clipboard.writeText("curl -sSL https://billama.net/install.sh | sh");
                 setCopied(true);
+                trackDocsEngagement({ docSection: "hero_quick_install", action: "code_copy", codeSnippetKey: "curl_install_sh" });
+                trackMarketingCta({ ctaName: "Copy Install Script", location: "hero_quick_install", ctaType: "connect_gpu" });
                 setTimeout(() => setCopied(false), 2000);
               }}
               className="text-slate-400 hover:text-cyan-400 p-1 transition-colors"
@@ -194,7 +201,10 @@ helm upgrade --install billama billama/billama \\
             {/* Code Selector Tabs */}
             <div className="flex items-center gap-1 bg-slate-950/80 p-1 rounded-lg border border-slate-800 text-xs font-mono">
               <button
-                onClick={() => setActiveTab("openai")}
+                onClick={() => {
+                  setActiveTab("openai");
+                  trackDocsEngagement({ docSection: "hero_window", action: "tab_switch", codeSnippetKey: "openai" });
+                }}
                 className={`px-3 py-1 rounded-md transition-all ${
                   activeTab === "openai" 
                     ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold" 
@@ -204,7 +214,10 @@ helm upgrade --install billama billama/billama \\
                 Python OpenAI SDK
               </button>
               <button
-                onClick={() => setActiveTab("ollama")}
+                onClick={() => {
+                  setActiveTab("ollama");
+                  trackDocsEngagement({ docSection: "hero_window", action: "tab_switch", codeSnippetKey: "ollama" });
+                }}
                 className={`px-3 py-1 rounded-md transition-all ${
                   activeTab === "ollama" 
                     ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold" 
@@ -214,7 +227,10 @@ helm upgrade --install billama billama/billama \\
                 Ollama cURL
               </button>
               <button
-                onClick={() => setActiveTab("node")}
+                onClick={() => {
+                  setActiveTab("node");
+                  trackDocsEngagement({ docSection: "hero_window", action: "tab_switch", codeSnippetKey: "node" });
+                }}
                 className={`px-3 py-1 rounded-md transition-all ${
                   activeTab === "node" 
                     ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold" 
@@ -224,7 +240,10 @@ helm upgrade --install billama billama/billama \\
                 Node Daemon
               </button>
               <button
-                onClick={() => setActiveTab("helm")}
+                onClick={() => {
+                  setActiveTab("helm");
+                  trackDocsEngagement({ docSection: "hero_window", action: "tab_switch", codeSnippetKey: "helm" });
+                }}
                 className={`px-3 py-1 rounded-md transition-all hidden md:inline-block ${
                   activeTab === "helm" 
                     ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold" 

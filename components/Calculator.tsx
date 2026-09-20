@@ -13,6 +13,7 @@ import {
   Check, 
   DollarSign 
 } from "lucide-react";
+import { trackMarketingCta, trackCalculatorEngagement } from "@/lib/snowcat/tracker";
 
 type BuyerModel = {
   id: string;
@@ -90,7 +91,10 @@ export default function Calculator() {
           {/* Mode Switcher */}
           <div className="mt-8 inline-flex p-1.5 rounded-xl bg-slate-900 border border-slate-800">
             <button
-              onClick={() => setMode("buyer")}
+              onClick={() => {
+                setMode("buyer");
+                trackMarketingCta({ ctaName: "Compute Buyer Mode", location: "calculator_toggle", ctaType: "calculator" });
+              }}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 mode === "buyer"
                   ? "bg-cyan-500 text-slate-950 shadow-md font-bold"
@@ -101,7 +105,10 @@ export default function Calculator() {
               <span>For Compute Buyers (AI Teams)</span>
             </button>
             <button
-              onClick={() => setMode("provider")}
+              onClick={() => {
+                setMode("provider");
+                trackMarketingCta({ ctaName: "GPU Provider Mode", location: "calculator_toggle", ctaType: "calculator" });
+              }}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 mode === "provider"
                   ? "bg-indigo-500 text-white shadow-md font-bold"
@@ -129,7 +136,18 @@ export default function Calculator() {
                       <button
                         key={m.id}
                         type="button"
-                        onClick={() => setSelectedModelId(m.id)}
+                        onClick={() => {
+                          setSelectedModelId(m.id);
+                          const bCost = monthlyTokensMillions * m.billamaPerM;
+                          const cCost = monthlyTokensMillions * m.cloudPerM;
+                          trackCalculatorEngagement({
+                            mode: "buyer",
+                            selectedId: m.id,
+                            volume: monthlyTokensMillions,
+                            estimatedCost: bCost,
+                            savingsOrYield: cCost - bCost,
+                          });
+                        }}
                         className={`p-3 rounded-xl border text-left transition-all ${
                           selectedModelId === m.id
                             ? "bg-cyan-950/40 border-cyan-500 text-white shadow-md"
@@ -162,6 +180,15 @@ export default function Calculator() {
                     step="1"
                     value={monthlyTokensMillions}
                     onChange={(e) => setMonthlyTokensMillions(Number(e.target.value))}
+                    onPointerUp={() => {
+                      trackCalculatorEngagement({
+                        mode: "buyer",
+                        selectedId: selectedModelId,
+                        volume: monthlyTokensMillions,
+                        estimatedCost: buyerBillamaCost,
+                        savingsOrYield: buyerSavingsDollars,
+                      });
+                    }}
                     className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
                   />
                   <div className="flex justify-between text-[11px] text-slate-500 font-mono mt-1">
@@ -207,6 +234,20 @@ export default function Calculator() {
                 <div className="mt-6 pt-4 border-t border-slate-800">
                   <Link
                     href="#interactive-docs"
+                    onClick={() => {
+                      trackMarketingCta({
+                        ctaName: "Get API Key & Start",
+                        location: "calculator_buyer_result",
+                        targetUrl: "#interactive-docs",
+                        ctaType: "signup",
+                        metadata: {
+                          model: selectedModelId,
+                          volumeMillions: monthlyTokensMillions,
+                          projectedBillamaCost: Math.round(buyerBillamaCost),
+                          savingsDollars: Math.round(buyerSavingsDollars),
+                        },
+                      });
+                    }}
                     className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-cyan-500/20"
                   >
                     <span>Get API Key &amp; Start</span>
@@ -233,7 +274,17 @@ export default function Calculator() {
                       <button
                         key={g.id}
                         type="button"
-                        onClick={() => setSelectedGpuId(g.id)}
+                        onClick={() => {
+                          setSelectedGpuId(g.id);
+                          const gross = g.hourlyBlended * hoursPerDay * daysInMonth * unitCount;
+                          trackCalculatorEngagement({
+                            mode: "provider",
+                            selectedId: g.id,
+                            volume: unitCount,
+                            estimatedCost: gross,
+                            savingsOrYield: gross * 0.82,
+                          });
+                        }}
                         className={`p-3 rounded-xl border text-left transition-all ${
                           selectedGpuId === g.id
                             ? "bg-indigo-950/40 border-indigo-500 text-white shadow-md"
@@ -267,6 +318,15 @@ export default function Calculator() {
                       step="1"
                       value={hoursPerDay}
                       onChange={(e) => setHoursPerDay(Number(e.target.value))}
+                      onPointerUp={() => {
+                        trackCalculatorEngagement({
+                          mode: "provider",
+                          selectedId: selectedGpuId,
+                          volume: unitCount,
+                          estimatedCost: providerGrossMonthly,
+                          savingsOrYield: providerNetMonthly,
+                        });
+                      }}
                       className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-400"
                     />
                   </div>
@@ -287,6 +347,15 @@ export default function Calculator() {
                       step="1"
                       value={unitCount}
                       onChange={(e) => setUnitCount(Number(e.target.value))}
+                      onPointerUp={() => {
+                        trackCalculatorEngagement({
+                          mode: "provider",
+                          selectedId: selectedGpuId,
+                          volume: unitCount,
+                          estimatedCost: providerGrossMonthly,
+                          savingsOrYield: providerNetMonthly,
+                        });
+                      }}
                       className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-400"
                     />
                   </div>
@@ -331,6 +400,20 @@ export default function Calculator() {
                 <div className="mt-6 pt-4 border-t border-slate-800">
                   <Link
                     href="#providers"
+                    onClick={() => {
+                      trackMarketingCta({
+                        ctaName: "Install Node Agent & Connect",
+                        location: "calculator_provider_result",
+                        targetUrl: "#providers",
+                        ctaType: "connect_gpu",
+                        metadata: {
+                          hardware: selectedGpuId,
+                          units: unitCount,
+                          hoursPerDay,
+                          projectedNetMonthly: Math.round(providerNetMonthly),
+                        },
+                      });
+                    }}
                     className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-500/20"
                   >
                     <span>Install Node Agent &amp; Connect</span>
