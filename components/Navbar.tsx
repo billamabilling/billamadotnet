@@ -96,6 +96,13 @@ export default function Navbar() {
             Docs
           </Link>
           <Link 
+            href="#ecosystem" 
+            onClick={() => trackMarketingCta({ ctaName: "Ecosystem", location: "navbar_menu", targetUrl: "#ecosystem", ctaType: "nav" })}
+            className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
+          >
+            Ecosystem
+          </Link>
+          <Link 
             href="#faq" 
             onClick={() => trackMarketingCta({ ctaName: "FAQ", location: "navbar_menu", targetUrl: "#faq", ctaType: "nav" })}
             className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
@@ -188,6 +195,13 @@ export default function Navbar() {
               className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
             >
               Documentation
+            </Link>
+            <Link
+              href="#ecosystem"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
+            >
+              Ecosystem
             </Link>
             <Link
               href="#faq"

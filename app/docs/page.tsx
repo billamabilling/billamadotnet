@@ -51,32 +51,38 @@ export default function DocsPage() {
                   <a href="#quickstart" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
                     1. Quickstart &amp; Overview
                   </a>
+                  <a href="#billama-sdk" className="block py-1.5 px-2 rounded-lg text-cyan-300 hover:bg-slate-800 hover:text-cyan-200 font-semibold">
+                    2. Official TypeScript SDK (@billama/sdk)
+                  </a>
                   <a href="#openai-sdk" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    2. OpenAI SDK Drop-In
+                    3. OpenAI SDK Drop-In
                   </a>
                   <a href="#ollama-api" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    3. Native Ollama Endpoints
+                    4. Native Ollama Endpoints
                   </a>
                   <a href="#node-setup" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    4. Worker Node Daemon
+                    5. Worker Node Daemon
                   </a>
                   <a href="#zero-idle" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    5. Zero-Idle Waterfall™
+                    6. Zero-Idle Waterfall™
                   </a>
                   <a href="#rendergrid" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    6. RenderGrid 3D Blender
+                    7. RenderGrid 3D Blender
                   </a>
                   <a href="#freeipa" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    7. FreeIPA LDAP Integration
+                    8. FreeIPA LDAP Integration
                   </a>
                   <a href="#helm" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    8. Kubernetes Helm Deploy
+                    9. Kubernetes Helm Deploy
                   </a>
                   <a href="#payouts" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    9. Payouts &amp; Economics
+                    10. Payouts &amp; Economics
                   </a>
-                  <a href="#dual-router" className="block py-1.5 px-2 rounded-lg text-cyan-300 hover:bg-slate-800 hover:text-cyan-200 font-semibold">
-                    10. NeMo Switchyard Dual-Router
+                  <a href="#dual-router" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
+                    11. NeMo Switchyard Dual-Router
+                  </a>
+                  <a href="#ecosystem-docs" className="block py-1.5 px-2 rounded-lg text-cyan-300 hover:bg-slate-800 hover:text-cyan-200 font-semibold">
+                    12. Ecosystem App Architecture
                   </a>
                 </div>
               </div>
@@ -113,10 +119,60 @@ export default function DocsPage() {
               </section>
 
               {/* Section 2 */}
+              <section id="billama-sdk" className="space-y-4 pt-8 border-t border-slate-800">
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-cyan-400" />
+                  <span>2. Official TypeScript SDK (@billama/sdk)</span>
+                </h2>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  The official TypeScript/JavaScript library for full-stack applications. Includes streaming chat completions, billing checkout sessions, micro-metered job dispatching (RenderGrid Blender 3D, 4-stem Demucs separation), Next.js App Router balance guards, and React hooks.
+                </p>
+                <div className="p-4 rounded-2xl bg-[#060911] border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto">
+                  <pre>{`// 1. Installation
+pnpm add @billama/sdk
+
+// 2. Client Initialization & Streaming Chat
+import { Billama } from "@billama/sdk";
+
+const billama = new Billama({
+  apiKey: process.env.BILLAMA_API_KEY,
+});
+
+const stream = await billama.chat.stream({
+  model: "llama3.3:70b",
+  messages: [{ role: "user", content: "Optimize our data pipeline." }],
+});
+
+for await (const chunk of stream) {
+  process.stdout.write(chunk.content);
+}
+
+// Access diagnostic routing telemetry:
+console.log({
+  tokens: stream.usage?.totalTokens,
+  latencyMs: stream.latencyMs,
+  costUsd: stream.costUsd,
+  routerTarget: stream.routeTarget
+});
+
+// 3. User Wallet Balance Check & Subscriptions
+const balance = await billama.billing.getBalance();
+console.log("Credits remaining: $", balance.balanceUsd);
+
+const session = await billama.billing.createCheckoutSession({
+  planId: "pro_monthly",
+  customerEmail: "user@domain.com",
+  successUrl: "https://app.domain.com/settings/billing?success=true",
+  cancelUrl: "https://app.domain.com/pricing",
+});`}</pre>
+                </div>
+              </section>
+
+              {/* Section 3 */}
               <section id="openai-sdk" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Terminal className="w-5 h-5 text-cyan-400" />
-                  <span>2. OpenAI SDK Drop-In</span>
+                  <span>3. OpenAI SDK Drop-In</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Any application utilizing the official OpenAI client in Python, TypeScript, Go, or Rust can route traffic through Billama by configuring the <code className="text-cyan-300 font-mono">base_url</code>.
@@ -411,6 +467,78 @@ X-Billama-Switchyard-Strategy: cascade
 X-Billama-Switchyard-Confidence: 0.94
 X-Billama-Switchyard-Cost-Savings: 85%
 X-Billama-Node-Id: bifrost-adaptive-lb-pod-2`}</pre>
+                </div>
+              </section>
+
+              {/* Section 12 */}
+              <section id="ecosystem-docs" className="space-y-6 pt-8 border-t border-slate-800">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+                  <Layers className="w-3.5 h-3.5" />
+                  <span>Production Reference Deployments</span>
+                </div>
+
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <span>12. Ecosystem Applications Architecture</span>
+                </h2>
+
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Five commercial entities leverage Billama as their unified AI compute layer and billing clearinghouse:
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-white text-sm">Syncromancer</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30">Music DAW</span>
+                    </div>
+                    <p className="text-xs text-slate-400">
+                      Browser-based Google Magenta JS generates dynamic MIDI melodies and chords, while heavy GPU Demucs 4-stem separation jobs run over Billama RenderGrid.
+                    </p>
+                    <code className="text-[11px] text-cyan-400 font-mono block">pnpm add @magenta/music @billama/sdk</code>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-white text-sm">Ironclad Grants</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">Grant Studio</span>
+                    </div>
+                    <p className="text-xs text-slate-400">
+                      Discovers funding opportunities and drafts federal proposals using Billama vector embeddings for RAG and Llama 3.3 70B narrative generation.
+                    </p>
+                    <code className="text-[11px] text-cyan-400 font-mono block">billama.embeddings.create() + billama.chat.stream()</code>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-white text-sm">FitDjinn Health PBC</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Health PBC</span>
+                    </div>
+                    <p className="text-xs text-slate-400">
+                      AI metabolic copilot evaluates patient vitals and workouts with pre-flight subscription balance guards ensuring compliance before model inference.
+                    </p>
+                    <code className="text-[11px] text-cyan-400 font-mono block">billama.billing.getBalance() &gt; 0</code>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-white text-sm">Monitaur Technologies</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Edge Video AI</span>
+                    </div>
+                    <p className="text-xs text-slate-400">
+                      NVIDIA Jetson IoT devices stream zero-idle anomaly inference, offloading heavy multi-camera vision batches to Billama GPU clusters during off-peak windows.
+                    </p>
+                    <code className="text-[11px] text-cyan-400 font-mono block">billama.jobs.createBatch(&#123; type: &quot;VISION_INFERENCE&quot; &#125;)</code>
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-slate-900/80 border border-cyan-500/30">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-bold text-white text-sm">LegitBlock Founding Charters</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Statutory Governance</span>
+                  </div>
+                  <p className="text-xs text-slate-300">
+                    Each entity in the Billama ecosystem has its statutory corporate charter anchored into an immutable Genesis block using LegitBlock&apos;s Delaware C-Corp, PBC, and Platform Coop templates with DGCL § 212 voting rules.
+                  </p>
                 </div>
               </section>
             </article>

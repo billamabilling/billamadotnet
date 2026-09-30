@@ -5,6 +5,7 @@ import Calculator from "@/components/Calculator";
 import Features from "@/components/Features";
 import Architecture from "@/components/Architecture";
 import InteractiveDocs from "@/components/InteractiveDocs";
+import EcosystemShowcase from "@/components/EcosystemShowcase";
 import Comparison from "@/components/Comparison";
 import Faq from "@/components/Faq";
 import BottomCta from "@/components/BottomCta";
@@ -22,6 +23,7 @@ export default function Home() {
         <Features />
         <Architecture />
         <InteractiveDocs />
+        <EcosystemShowcase />
         <Comparison />
         <Faq />
 

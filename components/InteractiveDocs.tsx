@@ -16,10 +16,10 @@ import {
 } from "lucide-react";
 import { trackDocsEngagement } from "@/lib/snowcat/tracker";
 
-type DocSection = "openai" | "ollama" | "router" | "node" | "helm" | "ldap";
+type DocSection = "sdk" | "openai" | "ollama" | "router" | "node" | "helm" | "ldap";
 
 export default function InteractiveDocs() {
-  const [activeDoc, setActiveDoc] = useState<DocSection>("openai");
+  const [activeDoc, setActiveDoc] = useState<DocSection>("sdk");
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const copyCode = (key: string, code: string) => {
@@ -42,7 +42,7 @@ export default function InteractiveDocs() {
             Integration <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">Quickstart Guides</span>
           </h2>
           <p className="mt-4 text-slate-400 text-base sm:text-lg">
-            Deploy in seconds. Complete working examples for Python, Node.js, Shell, Kubernetes Helm, and Enterprise LDAP.
+            Deploy in seconds. Complete working examples for TypeScript/JavaScript, Python, Shell, Kubernetes Helm, and Enterprise LDAP.
           </p>
         </div>
 
@@ -50,6 +50,22 @@ export default function InteractiveDocs() {
         <div className="max-w-5xl mx-auto glass-panel rounded-3xl border border-slate-800 overflow-hidden bg-[#0a0f1e]/95">
           {/* Docs Tabs */}
           <div className="flex border-b border-slate-800/80 bg-slate-950/60 overflow-x-auto text-xs font-mono">
+            <button
+              onClick={() => {
+                setActiveDoc("sdk");
+                trackDocsEngagement({ docSection: "interactive_docs", action: "tab_switch", codeSnippetKey: "sdk" });
+              }}
+              className={`px-5 py-3.5 border-b-2 font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
+                activeDoc === "sdk"
+                  ? "border-cyan-400 text-cyan-300 bg-slate-900/50"
+                  : "border-transparent text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <Zap className="w-4 h-4 text-cyan-400" />
+              <span>@billama/sdk (TypeScript)</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono">v1.0</span>
+            </button>
+
             <button
               onClick={() => {
                 setActiveDoc("openai");
@@ -144,6 +160,75 @@ export default function InteractiveDocs() {
 
           {/* Doc Content Panels */}
           <div className="p-6 sm:p-8">
+            {activeDoc === "sdk" && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-white">Official TypeScript SDK (@billama/sdk)</h3>
+                  <button
+                    onClick={() => copyCode("sdk", `// pnpm add @billama/sdk
+import { Billama } from "@billama/sdk";
+
+const billama = new Billama({
+  apiKey: process.env.BILLAMA_API_KEY,
+});
+
+// 1. Streaming AI Inference with telemetry
+const stream = await billama.chat.stream({
+  model: "llama3.3:70b",
+  messages: [{ role: "user", content: "Design a high-throughput microservice architecture." }],
+});
+
+for await (const chunk of stream) {
+  process.stdout.write(chunk.content);
+}
+console.log(\`Tokens used: \${stream.usage?.totalTokens}, Cost: $\${stream.costUsd}\`);
+
+// 2. Universal App Subscription Billing
+const checkout = await billama.billing.createCheckoutSession({
+  planId: "pro_monthly",
+  customerEmail: "user@domain.com",
+  successUrl: "https://myapp.com/dashboard?session_id={CHECKOUT_SESSION_ID}",
+  cancelUrl: "https://myapp.com/pricing",
+});`)}
+                    className="inline-flex items-center gap-1 text-xs font-mono bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    {copiedKey === "sdk" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedKey === "sdk" ? "Copied" : "Copy Code"}</span>
+                  </button>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Install the official SDK with <code className="text-cyan-300">pnpm add @billama/sdk</code> (or npm/yarn). Provides native dual-routing streaming chat, wallet balance verification, micro-metered job execution (RenderGrid, stem separation), Next.js route guards, and React hooks (<code className="text-cyan-300">useBillamaBalance</code>, <code className="text-cyan-300">useBillamaChat</code>).
+                </p>
+                <div className="p-4 rounded-xl bg-[#060911] border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto">
+                  <pre>{`// pnpm add @billama/sdk
+import { Billama } from "@billama/sdk";
+
+const billama = new Billama({
+  apiKey: process.env.BILLAMA_API_KEY,
+});
+
+// 1. Streaming AI Inference with telemetry
+const stream = await billama.chat.stream({
+  model: "llama3.3:70b",
+  messages: [{ role: "user", content: "Design a high-throughput microservice architecture." }],
+});
+
+for await (const chunk of stream) {
+  process.stdout.write(chunk.content);
+}
+console.log(\`Tokens: \${stream.usage?.totalTokens}, Latency: \${stream.latencyMs}ms\`);
+
+// 2. Universal App Subscription Billing
+const checkout = await billama.billing.createCheckoutSession({
+  planId: "pro_monthly",
+  customerEmail: "user@domain.com",
+  successUrl: "https://myapp.com/dashboard?session_id={CHECKOUT_SESSION_ID}",
+  cancelUrl: "https://myapp.com/pricing",
+});`}</pre>
+                </div>
+              </div>
+            )}
+
             {activeDoc === "openai" && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
