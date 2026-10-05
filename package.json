@@ -17,7 +17,11 @@
     "serve": "npx serve out -p 3001",
     "start": "npx serve out -p 3001",
     "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/calculator-logic.test.mjs test/content-integrity.test.mjs",
+    "test:export": "node --test test/verify-export.test.mjs",
+    "test:all": "node --test test/*.test.mjs",
+    "audit": "pnpm run typecheck && pnpm run test && pnpm run build && pnpm run test:export"
   },
   "dependencies": {
     "@snowplow/browser-tracker": "^4.10.2",
