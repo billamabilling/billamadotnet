@@ -201,11 +201,11 @@ for chunk in response:
                 </div>
               </section>
 
-              {/* Section 3 */}
+              {/* Section 4 */}
               <section id="ollama-api" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Code2 className="w-5 h-5 text-cyan-400" />
-                  <span>3. Native Ollama API</span>
+                  <span>4. Native Ollama API</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Billama natively proxies Ollama API endpoints, preserving the exact JSON response structures including token counts (<code className="text-cyan-300 font-mono">prompt_eval_count</code> and <code className="text-cyan-300 font-mono">eval_count</code>).
@@ -232,11 +232,11 @@ curl https://api.billama.net/api/tags \\
                 </div>
               </section>
 
-              {/* Section 4 */}
+              {/* Section 5 */}
               <section id="node-setup" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Cpu className="w-5 h-5 text-indigo-400" />
-                  <span>4. Worker Node Daemon Setup</span>
+                  <span>5. Worker Node Daemon Setup</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Hardware owners run the lightweight non-root node runner. The runner automatically detects NVIDIA CUDA, AMD ROCm, or Apple Metal hardware and dynamically allocates models to VRAM.
@@ -261,11 +261,11 @@ billama-node start \\
                 </div>
               </section>
 
-              {/* Section 5 */}
+              {/* Section 6 */}
               <section id="zero-idle" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Layers className="w-5 h-5 text-emerald-400" />
-                  <span>5. The Zero-Idle Waterfall™</span>
+                  <span>6. The Zero-Idle Waterfall™</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   The Zero-Idle Waterfall ensures no hardware sits idle. Whenever real-time inference traffic drops, the node manager switches tasks in under 100 milliseconds:
@@ -286,11 +286,11 @@ billama-node start \\
                 </div>
               </section>
 
-              {/* Section 6 */}
+              {/* Section 7 */}
               <section id="rendergrid" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Server className="w-5 h-5 text-purple-400" />
-                  <span>6. RenderGrid &amp; Universal Batch Compute</span>
+                  <span>7. RenderGrid &amp; Universal Batch Compute</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Billama includes a distributed 3D rendering engine. Headless Blender scenes are sliced into tile coordinates and dispatched across active nodes. Output frames are cryptographically verified using sha256 tile hashes to eliminate bad renders.
@@ -310,11 +310,11 @@ curl -X POST https://api.billama.net/v1/jobs/submit \\
                 </div>
               </section>
 
-              {/* Section 7 */}
+              {/* Section 8 */}
               <section id="freeipa" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5 text-cyan-400" />
-                  <span>7. Enterprise FreeIPA &amp; LDAP Setup</span>
+                  <span>8. Enterprise FreeIPA &amp; LDAP Setup</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Billama provides in-cluster FreeIPA integration with automated user seeding and group mapping. Configure your LDAP binding in Helm or environment variables:
@@ -330,11 +330,11 @@ LDAP_GROUP_SEARCH_FILTER="(member={{dn}})"`}</pre>
                 </div>
               </section>
 
-              {/* Section 8 */}
+              {/* Section 9 */}
               <section id="helm" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Server className="w-5 h-5 text-indigo-400" />
-                  <span>8. Kubernetes Helm Deployment</span>
+                  <span>9. Kubernetes Helm Deployment</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Deploy Billama in private enterprise clusters using the production Helm chart.
@@ -348,11 +348,11 @@ helm upgrade --install billama billama/billama \\
                 </div>
               </section>
 
-              {/* Section 9 */}
+              {/* Section 10 */}
               <section id="payouts" className="space-y-4 pt-8 border-t border-slate-800">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-emerald-400" />
-                  <span>9. Payouts &amp; Provider Economics</span>
+                  <span>10. Payouts &amp; Provider Economics</span>
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Hardware nodes receive an 82% net payout. Settlements occur weekly with support for Stripe Connect bank ACH, USDC on Solana or Polygon, or 0%-fee Billama compute credits.

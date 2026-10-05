@@ -127,7 +127,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("billama-theme");
+    let savedTheme: string | null = null;
+    try {
+      savedTheme = localStorage.getItem("billama-theme");
+    } catch {
+      // localStorage may be disabled in private browsing or iframe sandbox
+    }
     const validTheme = AVAILABLE_THEMES.find((t) => t.id === savedTheme);
 
     if (validTheme) {
@@ -164,7 +169,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     setThemeState(found.id);
     setModeState(found.category);
-    localStorage.setItem("billama-theme", found.id);
+    try {
+      localStorage.setItem("billama-theme", found.id);
+    } catch {
+      // Ignore storage errors in restricted contexts
+    }
     applyThemeToDom(found.id, found.category);
   };
 

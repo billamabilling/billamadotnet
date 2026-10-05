@@ -201,7 +201,7 @@ export default function EcosystemShowcase() {
             </p>
           </div>
           <Link
-            href="/docs#sdk"
+            href="/docs/#billama-sdk"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition-colors whitespace-nowrap"
           >
             <span>View SDK Documentation</span>

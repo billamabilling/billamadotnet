@@ -64,7 +64,7 @@ export default function Calculator() {
   const buyerBillamaCost = (monthlyTokensMillions * currentModel.billamaPerM);
   const buyerCloudCost = (monthlyTokensMillions * currentModel.cloudPerM);
   const buyerSavingsDollars = buyerCloudCost - buyerBillamaCost;
-  const buyerSavingsPercent = Math.round((buyerSavingsDollars / buyerCloudCost) * 100);
+  const buyerSavingsPercent = buyerCloudCost > 0 ? Math.round((buyerSavingsDollars / buyerCloudCost) * 100) : 0;
 
   // Provider Calculations
   const currentGpu = PROVIDER_GPUS.find(g => g.id === selectedGpuId) || PROVIDER_GPUS[0];
@@ -233,12 +233,12 @@ export default function Calculator() {
 
                 <div className="mt-6 pt-4 border-t border-slate-800">
                   <Link
-                    href="#interactive-docs"
+                    href="/#interactive-docs"
                     onClick={() => {
                       trackMarketingCta({
                         ctaName: "Get API Key & Start",
                         location: "calculator_buyer_result",
-                        targetUrl: "#interactive-docs",
+                        targetUrl: "/#interactive-docs",
                         ctaType: "signup",
                         metadata: {
                           model: selectedModelId,
@@ -399,12 +399,12 @@ export default function Calculator() {
 
                 <div className="mt-6 pt-4 border-t border-slate-800">
                   <Link
-                    href="#providers"
+                    href="/#providers"
                     onClick={() => {
                       trackMarketingCta({
                         ctaName: "Install Node Agent & Connect",
                         location: "calculator_provider_result",
-                        targetUrl: "#providers",
+                        targetUrl: "/#providers",
                         ctaType: "connect_gpu",
                         metadata: {
                           hardware: selectedGpuId,

@@ -22,12 +22,12 @@ export default function BottomCta() {
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
-                href="#providers"
+                href="/#providers"
                 onClick={() =>
                   trackMarketingCta({
                     ctaName: "Connect GPU Node",
                     location: "bottom_banner",
-                    targetUrl: "#providers",
+                    targetUrl: "/#providers",
                     ctaType: "connect_gpu",
                   })
                 }
@@ -38,12 +38,12 @@ export default function BottomCta() {
               </Link>
 
               <Link
-                href="#interactive-docs"
+                href="/#interactive-docs"
                 onClick={() =>
                   trackMarketingCta({
                     ctaName: "Explore API Docs",
                     location: "bottom_banner",
-                    targetUrl: "#interactive-docs",
+                    targetUrl: "/#interactive-docs",
                     ctaType: "docs",
                   })
                 }
