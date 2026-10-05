@@ -31,11 +31,11 @@ export default function Footer() {
               Product
             </div>
             <ul className="space-y-2">
-              <li><Link href="#features" className="hover:text-cyan-400 transition-colors">Features</Link></li>
-              <li><Link href="#waterfall" className="hover:text-cyan-400 transition-colors">Zero-Idle Waterfall</Link></li>
-              <li><Link href="#calculator" className="hover:text-cyan-400 transition-colors">Savings &amp; Yield Calculator</Link></li>
-              <li><Link href="#architecture" className="hover:text-cyan-400 transition-colors">Architecture</Link></li>
-              <li><Link href="#faq" className="hover:text-cyan-400 transition-colors">FAQ</Link></li>
+              <li><Link href="/#features" className="hover:text-cyan-400 transition-colors">Features</Link></li>
+              <li><Link href="/#waterfall" className="hover:text-cyan-400 transition-colors">Zero-Idle Waterfall</Link></li>
+              <li><Link href="/#calculator" className="hover:text-cyan-400 transition-colors">Savings &amp; Yield Calculator</Link></li>
+              <li><Link href="/#architecture" className="hover:text-cyan-400 transition-colors">Architecture</Link></li>
+              <li><Link href="/#faq" className="hover:text-cyan-400 transition-colors">FAQ</Link></li>
             </ul>
           </div>
 
@@ -60,9 +60,9 @@ export default function Footer() {
             </div>
             <ul className="space-y-2">
               <li><Link href="/docs/#node-setup" className="hover:text-cyan-400 transition-colors">Connect Node Agent</Link></li>
-              <li><Link href="#calculator" className="hover:text-cyan-400 transition-colors">Earnings Estimator</Link></li>
-              <li><Link href="#waterfall" className="hover:text-cyan-400 transition-colors">RenderGrid 3D</Link></li>
-              <li><Link href="#providers" className="hover:text-cyan-400 transition-colors">Payout Rails (Stripe / USDC)</Link></li>
+              <li><Link href="/#calculator" className="hover:text-cyan-400 transition-colors">Earnings Estimator</Link></li>
+              <li><Link href="/#waterfall" className="hover:text-cyan-400 transition-colors">RenderGrid 3D</Link></li>
+              <li><Link href="/#providers" className="hover:text-cyan-400 transition-colors">Payout Rails (Stripe / USDC)</Link></li>
               <li>
                 <a 
                   href="https://github.com/billamabilling/billamadotnet" 
@@ -94,7 +94,7 @@ export default function Footer() {
             <Link href="/docs/" className="hover:text-slate-300 transition-colors">
               Docs
             </Link>
-            <Link href="#faq" className="hover:text-slate-300 transition-colors">
+            <Link href="/#faq" className="hover:text-slate-300 transition-colors">
               Support
             </Link>
           </div>

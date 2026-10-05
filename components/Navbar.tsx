@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { 
   Server, 
   Cpu, 
@@ -20,6 +21,26 @@ import { trackMarketingCta } from "@/lib/snowcat/tracker";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/" || pathname === "";
+  const isDocs = pathname?.startsWith("/docs");
+
+  const getNavHref = (hash: string) => {
+    const clean = hash.startsWith("#") ? hash : `#${hash}`;
+    return isHome ? clean : `/${clean}`;
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 80);
+      }
+    }
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-[#080c14]/80 backdrop-blur-xl transition-all">
@@ -61,29 +82,29 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-300" aria-label="Main Navigation">
           <Link 
-            href="#features" 
-            onClick={() => trackMarketingCta({ ctaName: "Features", location: "navbar_menu", targetUrl: "#features", ctaType: "nav" })}
+            href={getNavHref("features")} 
+            onClick={() => trackMarketingCta({ ctaName: "Features", location: "navbar_menu", targetUrl: getNavHref("features"), ctaType: "nav" })}
             className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             Features
           </Link>
           <Link 
-            href="#waterfall" 
-            onClick={() => trackMarketingCta({ ctaName: "Zero-Idle Grid", location: "navbar_menu", targetUrl: "#waterfall", ctaType: "nav" })}
+            href={getNavHref("waterfall")} 
+            onClick={() => trackMarketingCta({ ctaName: "Zero-Idle Grid", location: "navbar_menu", targetUrl: getNavHref("waterfall"), ctaType: "nav" })}
             className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             Zero-Idle Grid
           </Link>
           <Link 
-            href="#calculator" 
-            onClick={() => trackMarketingCta({ ctaName: "Calculator", location: "navbar_menu", targetUrl: "#calculator", ctaType: "calculator" })}
+            href={getNavHref("calculator")} 
+            onClick={() => trackMarketingCta({ ctaName: "Calculator", location: "navbar_menu", targetUrl: getNavHref("calculator"), ctaType: "calculator" })}
             className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             Calculator
           </Link>
           <Link 
-            href="#architecture" 
-            onClick={() => trackMarketingCta({ ctaName: "Architecture", location: "navbar_menu", targetUrl: "#architecture", ctaType: "nav" })}
+            href={getNavHref("architecture")} 
+            onClick={() => trackMarketingCta({ ctaName: "Architecture", location: "navbar_menu", targetUrl: getNavHref("architecture"), ctaType: "nav" })}
             className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             Architecture
@@ -91,20 +112,24 @@ export default function Navbar() {
           <Link 
             href="/docs/" 
             onClick={() => trackMarketingCta({ ctaName: "Docs", location: "navbar_menu", targetUrl: "/docs/", ctaType: "docs" })}
-            className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
+            className={`px-3 py-2 rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500 ${
+              isDocs
+                ? "text-cyan-300 font-semibold bg-cyan-950/40 border border-cyan-500/30"
+                : "hover:text-cyan-400 hover:bg-slate-800/50"
+            }`}
           >
             Docs
           </Link>
           <Link 
-            href="#ecosystem" 
-            onClick={() => trackMarketingCta({ ctaName: "Ecosystem", location: "navbar_menu", targetUrl: "#ecosystem", ctaType: "nav" })}
+            href={getNavHref("ecosystem")} 
+            onClick={() => trackMarketingCta({ ctaName: "Ecosystem", location: "navbar_menu", targetUrl: getNavHref("ecosystem"), ctaType: "nav" })}
             className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             Ecosystem
           </Link>
           <Link 
-            href="#faq" 
-            onClick={() => trackMarketingCta({ ctaName: "FAQ", location: "navbar_menu", targetUrl: "#faq", ctaType: "nav" })}
+            href={getNavHref("faq")} 
+            onClick={() => trackMarketingCta({ ctaName: "FAQ", location: "navbar_menu", targetUrl: getNavHref("faq"), ctaType: "nav" })}
             className="px-3 py-2 rounded-md hover:text-cyan-400 hover:bg-slate-800/50 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             FAQ
@@ -129,8 +154,8 @@ export default function Navbar() {
           </a>
 
           <Link
-            href="#providers"
-            onClick={() => trackMarketingCta({ ctaName: "Connect GPU", location: "navbar", targetUrl: "#providers", ctaType: "connect_gpu" })}
+            href={getNavHref("providers")}
+            onClick={() => trackMarketingCta({ ctaName: "Connect GPU", location: "navbar", targetUrl: getNavHref("providers"), ctaType: "connect_gpu" })}
             className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-md shadow-cyan-500/20 transition-all hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <Cpu className="w-3.5 h-3.5" />
@@ -162,28 +187,28 @@ export default function Navbar() {
 
           <nav className="flex flex-col space-y-1 text-sm font-medium">
             <Link
-              href="#features"
+              href={getNavHref("features")}
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
             >
               Features
             </Link>
             <Link
-              href="#waterfall"
+              href={getNavHref("waterfall")}
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
             >
               Zero-Idle Grid
             </Link>
             <Link
-              href="#calculator"
+              href={getNavHref("calculator")}
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
             >
               Cost &amp; Yield Calculator
             </Link>
             <Link
-              href="#architecture"
+              href={getNavHref("architecture")}
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
             >
@@ -192,19 +217,23 @@ export default function Navbar() {
             <Link
               href="/docs/"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
+              className={`px-3 py-2.5 rounded-lg ${
+                isDocs
+                  ? "text-cyan-300 font-semibold bg-cyan-950/40 border border-cyan-500/30"
+                  : "text-slate-200 hover:bg-slate-800"
+              }`}
             >
               Documentation
             </Link>
             <Link
-              href="#ecosystem"
+              href={getNavHref("ecosystem")}
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
             >
               Ecosystem
             </Link>
             <Link
-              href="#faq"
+              href={getNavHref("faq")}
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800"
             >
@@ -214,7 +243,7 @@ export default function Navbar() {
 
           <div className="pt-2 border-t border-slate-800 flex flex-col gap-2">
             <Link
-              href="#providers"
+              href={getNavHref("providers")}
               onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-sm"
             >
