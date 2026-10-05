@@ -482,7 +482,7 @@ X-Billama-Node-Id: edge-adaptive-lb-pod-2`}</pre>
                 </h2>
 
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  Four commercial ventures leverage Billama as their unified AI compute layer and billing clearinghouse:
+                  Five commercial ventures leverage Billama as their unified AI compute layer and billing clearinghouse:
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -528,6 +528,17 @@ X-Billama-Node-Id: edge-adaptive-lb-pod-2`}</pre>
                       NVIDIA Jetson IoT devices stream zero-idle anomaly inference, offloading heavy multi-camera vision batches to Billama GPU clusters during off-peak windows.
                     </p>
                     <code className="text-[11px] text-cyan-400 font-mono block">billama.jobs.createBatch(&#123; type: &quot;VISION_INFERENCE&quot; &#125;)</code>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-white text-sm">BokBot Defense</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 border border-orange-500/30">Poultry Agritech</span>
+                    </div>
+                    <p className="text-xs text-slate-400">
+                      On-premise Frigate NVR and ZoneMinder streams route backyard chicken coop camera frames to Billama vision models (llama3.2-vision, qwen2.5-vl) for real-time predator threat classification and coop defense triggers.
+                    </p>
+                    <code className="text-[11px] text-cyan-400 font-mono block">billama.chat.completions.create(&#123; model: &quot;llama3.2-vision:11b&quot; &#125;)</code>
                   </div>
                 </div>
               </section>

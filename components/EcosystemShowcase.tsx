@@ -5,6 +5,7 @@ import {
   FileText, 
   Activity, 
   Video, 
+  Bird,
   ArrowRight,
   Sparkles,
   Cpu
@@ -89,6 +90,22 @@ const PROJECTS: EcosystemProject[] = [
       "Asynchronous frame batching over Billama RenderGrid API",
     ],
   },
+  {
+    id: "bokbot",
+    name: "BokBot Defense",
+    tagline: "Automated Backyard Chicken Monitoring & Threat Intelligence",
+    description: "Connects on-premise Frigate NVR and ZoneMinder camera streams to Billama decentralized vision models for real-time predator threat classification and automated coop defenses.",
+    icon: Bird,
+    badge: "Poultry & Agritech AI",
+    badgeColor: "bg-orange-500/20 text-orange-300 border-orange-500/30",
+    billamaRole: "Decentralized Vision Inference (Llama 3.2 Vision) & Micro-Metered Alerts",
+    features: [
+      "Real-time Frigate NVR & ZoneMinder RTSP camera frame streaming",
+      "Decentralized vision inference detecting hawks, foxes, raccoons, & coyotes",
+      "Zero-Idle GPU routing for continuous offload of coop alarm snapshots",
+      "Interactive bounding-box incident review & model fine-tuning dataset export",
+    ],
+  },
 ];
 
 export default function EcosystemShowcase() {
@@ -108,12 +125,12 @@ export default function EcosystemShowcase() {
             </span>
           </h2>
           <p className="mt-4 text-slate-400 text-base sm:text-lg">
-            Four production ventures utilize Billama as their central billing clearinghouse, subscription engine, and high-performance AI inference backbone.
+            Five production ventures utilize Billama as their central billing clearinghouse, subscription engine, and high-performance AI inference backbone.
           </p>
         </div>
 
         {/* Ventures Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project) => {
             const Icon = project.icon;
             return (
