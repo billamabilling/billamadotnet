@@ -5,11 +5,8 @@ import {
   FileText, 
   Activity, 
   Video, 
-  ShieldCheck, 
-  ExternalLink, 
   ArrowRight,
   Sparkles,
-  Layers,
   Cpu
 } from "lucide-react";
 import Link from "next/link";
@@ -92,22 +89,6 @@ const PROJECTS: EcosystemProject[] = [
       "Asynchronous frame batching over Billama RenderGrid API",
     ],
   },
-  {
-    id: "legitblock",
-    name: "LegitBlock",
-    tagline: "Statutory Corporate Governance & Cryptographic Charters",
-    description: "The founding legal software that anchors the Genesis corporate charters for all ecosystem entities. Enforces DGCL § 212 voting, ZK covenant proofs, and Merkle notarization.",
-    icon: ShieldCheck,
-    badge: "Corporate Law Tech",
-    badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
-    billamaRole: "Founding Legal Ledger & Verifiable Multi-Entity Charters",
-    features: [
-      "Delaware C-Corp, PBC, Platform Coop, and 501(c)(3) templates",
-      "Cryptographic Genesis block sealing for each venture",
-      "Homomorphic Pedersen commitments for secret balloting",
-      "Git-native primary legal storage and timestamp anchoring",
-    ],
-  },
 ];
 
 export default function EcosystemShowcase() {
@@ -127,12 +108,12 @@ export default function EcosystemShowcase() {
             </span>
           </h2>
           <p className="mt-4 text-slate-400 text-base sm:text-lg">
-            Five production ventures utilize Billama as their central billing clearinghouse, subscription engine, and high-performance AI inference backbone.
+            Four production ventures utilize Billama as their central billing clearinghouse, subscription engine, and high-performance AI inference backbone.
           </p>
         </div>
 
         {/* Ventures Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PROJECTS.map((project) => {
             const Icon = project.icon;
             return (

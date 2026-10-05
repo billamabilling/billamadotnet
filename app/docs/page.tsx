@@ -482,7 +482,7 @@ X-Billama-Node-Id: edge-adaptive-lb-pod-2`}</pre>
                 </h2>
 
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  Five commercial entities leverage Billama as their unified AI compute layer and billing clearinghouse:
+                  Four commercial ventures leverage Billama as their unified AI compute layer and billing clearinghouse:
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -529,16 +529,6 @@ X-Billama-Node-Id: edge-adaptive-lb-pod-2`}</pre>
                     </p>
                     <code className="text-[11px] text-cyan-400 font-mono block">billama.jobs.createBatch(&#123; type: &quot;VISION_INFERENCE&quot; &#125;)</code>
                   </div>
-                </div>
-
-                <div className="p-5 rounded-2xl bg-slate-900/80 border border-cyan-500/30">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-white text-sm">LegitBlock Founding Charters</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Statutory Governance</span>
-                  </div>
-                  <p className="text-xs text-slate-300">
-                    Each entity in the Billama ecosystem has its statutory corporate charter anchored into an immutable Genesis block using LegitBlock&apos;s Delaware C-Corp, PBC, and Platform Coop templates with DGCL § 212 voting rules.
-                  </p>
                 </div>
               </section>
             </article>
