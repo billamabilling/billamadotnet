@@ -5,12 +5,13 @@ import SnowcatTracker from "@/components/SnowcatTracker";
 
 export const metadata: Metadata = {
   title: "Billama 3.0 — Decentralized GPU Marketplace & AI Token Utility Grid",
-  description: "Billama 3.0 delivers 60-80% cheaper AI inference with NVIDIA NeMo Switchyard + Bifrost dual-routing, drop-in OpenAI & Ollama compatibility, and guaranteed yields for GPU providers with the Zero-Idle Waterfall.",
+  description: "Billama 3.0 delivers 60-80% cheaper AI inference with intelligent multi-tier dual-routing, drop-in OpenAI & Ollama compatibility, and guaranteed yields for GPU providers with the Zero-Idle Waterfall.",
   keywords: [
     "Billama 3.0",
     "GPU Marketplace",
-    "NVIDIA Switchyard",
-    "Bifrost Router",
+    "Intelligent AI Router",
+    "Adaptive Model Cascading",
+    "Edge Token Router",
     "Decentralized AI",
     "Ollama Billing",
     "OpenAI Proxy",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Billama Team", url: "https://billama.net" }],
   openGraph: {
     title: "Billama 3.0 — Decentralized GPU Marketplace & AI Token Utility Grid",
-    description: "Drop-in OpenAI & Ollama API proxy with 60-80% savings, NVIDIA Switchyard intelligent routing, and guaranteed yields for GPU providers.",
+    description: "Drop-in OpenAI & Ollama API proxy with 60-80% savings, intelligent multi-tier model cascading, and guaranteed yields for GPU providers.",
     url: "https://billama.net",
     siteName: "Billama",
     locale: "en_US",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Billama 3.0 — Decentralized GPU Marketplace & AI Token Utility Grid",
-    description: "60-80% cheaper AI inference with NVIDIA Switchyard + Bifrost. Turn idle GPUs into an automated income stream.",
+    description: "60-80% cheaper AI inference with intelligent multi-tier AI routing. Turn idle GPUs into an automated income stream.",
   },
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦙</text></svg>",

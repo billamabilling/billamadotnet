@@ -11,7 +11,7 @@ export default function Comparison() {
       highlight: true
     },
     {
-      feature: "Intelligent Dual-Router (NeMo Switchyard + Bifrost)",
+      feature: "Intelligent Multi-Tier Dual-Router",
       billama: "Dual-Engine (<100µs)",
       hyperscaler: "Locked / Manual",
       apiAggregator: "Basic Round-Robin",

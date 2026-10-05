@@ -62,9 +62,9 @@ export default function Features() {
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white text-sm block">NVIDIA NeMo Switchyard + Bifrost Dual-Router</strong>
+                  <strong className="text-white text-sm block">Intelligent Multi-Tier Dual-Router</strong>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Intelligent model cascading downscales simple queries to lightweight models (<code className="text-cyan-300">llama3.2:3b</code>) and escalates complex reasoning to frontier models (<code className="text-cyan-300">llama3.3:70b</code>), backed by Bifrost&apos;s &lt;100µs transport.
+                    Intelligent model cascading routes simple queries to lightweight models (<code className="text-cyan-300">llama3.2:3b</code>) and escalates complex reasoning to frontier models (<code className="text-cyan-300">llama3.3:70b</code>), backed by sub-100µs edge transport.
                   </p>
                 </div>
               </li>
@@ -200,11 +200,11 @@ export default function Features() {
               <Zap className="w-5 h-5" />
             </div>
             <div className="flex items-center gap-2 mb-1.5">
-              <h4 className="text-base font-bold text-white">NeMo Switchyard Dual-Router</h4>
+              <h4 className="text-base font-bold text-white">Intelligent Dual-Router</h4>
               <span className="text-[10px] px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 font-mono">v3.0</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Intelligent model cascading downscales simple queries to efficient models and escalates reasoning to frontier models, with Bifrost handling &lt;100µs transport.
+              Intelligent model cascading routes simple queries to efficient models and escalates reasoning to frontier models, with sub-100µs edge transport.
             </p>
           </div>
 

@@ -18,7 +18,7 @@ import {
 
 export const metadata = {
   title: "Documentation — Billama 3.0 Decentralized GPU Grid",
-  description: "Comprehensive technical guides for Billama 3.0 OpenAI/Ollama proxy, NVIDIA NeMo Switchyard + Bifrost dual-routing, Node Daemon, FreeIPA LDAP, and Kubernetes Helm deployments.",
+  description: "Comprehensive technical guides for Billama 3.0 OpenAI/Ollama proxy, intelligent multi-tier AI routing, Node Daemon, FreeIPA LDAP, and Kubernetes Helm deployments.",
 };
 
 export default function DocsPage() {
@@ -79,7 +79,7 @@ export default function DocsPage() {
                     10. Payouts &amp; Economics
                   </a>
                   <a href="#dual-router" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
-                    11. NeMo Switchyard Dual-Router
+                    11. Intelligent Multi-Tier Routing
                   </a>
                   <a href="#ecosystem-docs" className="block py-1.5 px-2 rounded-lg text-cyan-300 hover:bg-slate-800 hover:text-cyan-200 font-semibold">
                     12. Ecosystem App Architecture
@@ -100,7 +100,7 @@ export default function DocsPage() {
                   Billama 3.0 System Architecture &amp; Developer Guide
                 </h1>
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  Billama 3.0 is an enterprise-grade decentralized GPU marketplace and token utility grid. Featuring the NVIDIA NeMo Switchyard + Bifrost dual-router, it dynamically matches prompts to optimal model tiers while guaranteeing continuous hardware yield through the Zero-Idle Waterfall.
+                  Billama 3.0 is an enterprise-grade decentralized GPU marketplace and token utility grid. Featuring an intelligent multi-tier dual-router, it dynamically matches prompts to optimal model tiers while guaranteeing continuous hardware yield through the Zero-Idle Waterfall.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                   <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
@@ -377,7 +377,7 @@ helm upgrade --install billama billama/billama \\
 
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Zap className="w-5 h-5 text-cyan-400" />
-                  <span>10. NVIDIA NeMo Switchyard &amp; Bifrost Dual-Routing</span>
+                  <span>11. Intelligent Multi-Tier Model Cascading &amp; Edge Routing</span>
                 </h2>
 
                 <p className="text-slate-300 text-sm leading-relaxed">
@@ -387,21 +387,21 @@ helm upgrade --install billama billama/billama \\
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-5 rounded-2xl bg-slate-900/60 border border-cyan-500/30 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-white text-sm">NVIDIA NeMo Switchyard</span>
+                      <span className="font-bold text-white text-sm">Model Cascading Brain</span>
                       <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono">Decision Layer</span>
                     </div>
                     <p className="text-xs text-slate-400 leading-relaxed">
-                      Rust-based intelligent router. Analyzes prompt complexity, agent intent, and quality feedback to pick the optimal model tier (cascading simple queries to 3B models and escalating complex reasoning to 70B models), saving an extra 40–70% in token costs.
+                      Analyzes prompt complexity, agent intent, and quality feedback to pick the optimal model tier (cascading simple queries to lightweight 3B models and escalating complex reasoning to frontier 70B models), saving an extra 40–70% in token costs.
                     </p>
                   </div>
 
                   <div className="p-5 rounded-2xl bg-slate-900/60 border border-blue-500/30 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-white text-sm">Bifrost Gateway</span>
+                      <span className="font-bold text-white text-sm">High-Speed Edge Gateway</span>
                       <span className="text-[10px] px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-mono">Transport Layer</span>
                     </div>
                     <p className="text-xs text-slate-400 leading-relaxed">
-                      Go-based token router with &lt;100µs overhead. Handles adaptive least-latency load balancing, health probes, Raft cluster leadership, and guardrail interception across thousands of warm GPU nodes.
+                      Ultra-low latency token router with &lt;100µs overhead. Handles adaptive least-latency load balancing, real-time health telemetry, cluster mesh routing, and guardrail interception across thousands of warm GPU nodes.
                     </p>
                   </div>
                 </div>
@@ -415,35 +415,35 @@ helm upgrade --install billama billama/billama \\
                     <thead className="bg-slate-900 text-slate-300 text-left">
                       <tr>
                         <th className="p-3">Mode</th>
-                        <th className="p-3">Switchyard (Model Brain)</th>
-                        <th className="p-3">Bifrost (Transport)</th>
+                        <th className="p-3">Decision Layer (Cascading)</th>
+                        <th className="p-3">Edge Transport (&lt;100µs)</th>
                         <th className="p-3">Behavior</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800 text-slate-400 bg-[#060911]">
                       <tr>
-                        <td className="p-3 text-cyan-300 font-bold">SWITCHYARD_BIFROST</td>
+                        <td className="p-3 text-cyan-300 font-bold">HYBRID_CASCADE</td>
                         <td className="p-3 text-emerald-400">Active (Cascading)</td>
                         <td className="p-3 text-emerald-400">Active (&lt;100µs LB)</td>
-                        <td className="p-3">Default companion mode: intelligent model choice + ultra-low latency proxy</td>
+                        <td className="p-3">Default dual-engine mode: intelligent model choice + ultra-low latency edge proxy</td>
                       </tr>
                       <tr>
-                        <td className="p-3 text-slate-300 font-bold">SWITCHYARD_ONLY</td>
-                        <td className="p-3 text-emerald-400">Active (Direct Proxy)</td>
-                        <td className="p-3 text-slate-600">Disabled</td>
-                        <td className="p-3">Standalone mode: Switchyard selects model and forwards directly to nodes</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3 text-slate-300 font-bold">BIFROST_ONLY</td>
-                        <td className="p-3 text-slate-600">Disabled</td>
+                        <td className="p-3 text-slate-300 font-bold">TIER_LOCKED</td>
+                        <td className="p-3 text-cyan-400">Explicit Model Tier</td>
                         <td className="p-3 text-emerald-400">Active (&lt;100µs LB)</td>
-                        <td className="p-3">Transport-only mode: Bifrost routes requests without model cascading</td>
+                        <td className="p-3">Direct tier mode: user-specified model with adaptive edge load balancing</td>
                       </tr>
                       <tr>
-                        <td className="p-3 text-slate-300 font-bold">DIRECT</td>
+                        <td className="p-3 text-slate-300 font-bold">EDGE_PROXY</td>
+                        <td className="p-3 text-slate-600">Pass-Through</td>
+                        <td className="p-3 text-emerald-400">Active (&lt;100µs LB)</td>
+                        <td className="p-3">Transport-only mode: high-throughput routing without dynamic model cascading</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 text-slate-300 font-bold">DIRECT_NODE</td>
                         <td className="p-3 text-slate-600">Disabled</td>
                         <td className="p-3 text-slate-600">Disabled</td>
-                        <td className="p-3">Fallback to decentralized P2P warm nodes or local Ollama</td>
+                        <td className="p-3">Direct session to decentralized P2P warm worker nodes or local daemon</td>
                       </tr>
                     </tbody>
                   </table>
@@ -459,14 +459,14 @@ helm upgrade --install billama billama/billama \\
 
                 <div className="p-4 rounded-xl bg-[#060911] border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto">
                   <pre>{`HTTP/1.1 200 OK
-X-Billama-Route-Target: SWITCHYARD_BIFROST
-X-Billama-Router-Engine: NeMo Switchyard → Bifrost (cascade)
-X-Billama-Switchyard-Model: llama3.2:3b
-X-Billama-Switchyard-Original-Model: llama3.3:70b
-X-Billama-Switchyard-Strategy: cascade
-X-Billama-Switchyard-Confidence: 0.94
-X-Billama-Switchyard-Cost-Savings: 85%
-X-Billama-Node-Id: bifrost-adaptive-lb-pod-2`}</pre>
+X-Billama-Route-Target: HYBRID_CASCADE
+X-Billama-Router-Engine: Adaptive Multi-Tier Engine
+X-Billama-Selected-Model: llama3.2:3b
+X-Billama-Original-Model: llama3.3:70b
+X-Billama-Routing-Strategy: cascade
+X-Billama-Routing-Confidence: 0.94
+X-Billama-Routing-Cost-Savings: 85%
+X-Billama-Node-Id: edge-adaptive-lb-pod-2`}</pre>
                 </div>
               </section>
 

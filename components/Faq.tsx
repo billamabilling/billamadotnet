@@ -6,8 +6,8 @@ import { trackFaqToggle } from "@/lib/snowcat/tracker";
 export default function Faq() {
   const faqs = [
     {
-      q: "What is the NVIDIA NeMo Switchyard + Bifrost Dual-Router in Billama 3.0?",
-      a: "Billama 3.0 couples NVIDIA NeMo Switchyard (Rust-based intelligent model router) with Bifrost (Go-based ultra-fast token router). Switchyard acts as the brain, evaluating prompt complexity and quality feedback to dynamically select the optimal model tier (cascading simple queries to lightweight 3B models and escalating complex reasoning to frontier 70B models), saving an extra 40–70% in token expenditure. Bifrost then acts as the high-performance transport layer, delivering sub-100µs proxying, health checks, and adaptive load balancing across warm nodes."
+      q: "How does Billama's Intelligent Dual-Router save 60–80% on inference costs?",
+      a: "Billama's dual-engine routing architecture pairs an intelligent model cascading engine with an ultra-fast edge transport layer. The routing engine evaluates prompt complexity and quality feedback to dynamically select the optimal model tier—routing simple queries to lightweight models and escalating complex reasoning to frontier 70B models. This dynamic cascading cuts token expenditures by 40–70%. Meanwhile, the low-latency transport layer provides sub-100µs proxying, real-time health telemetry, and adaptive load balancing across warm GPU nodes."
     },
     {
       q: "What makes Billama different from centralized AI clouds like AWS Bedrock or OpenAI?",

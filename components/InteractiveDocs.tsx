@@ -108,7 +108,7 @@ export default function InteractiveDocs() {
               }`}
             >
               <Zap className="w-4 h-4 text-cyan-400" />
-              <span>Switchyard Dual-Router</span>
+              <span>Intelligent AI Router</span>
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono">v3.0</span>
             </button>
 
@@ -347,11 +347,11 @@ curl https://api.billama.net/api/embeddings \\
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-bold text-white">NVIDIA NeMo Switchyard + Bifrost Dual-Routing</h3>
+                    <h3 className="text-lg font-bold text-white">Intelligent AI Routing &amp; Cascading</h3>
                     <span className="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">v3.0 Live</span>
                   </div>
                   <button
-                    onClick={() => copyCode("router", `# Example: Test Switchyard dynamic cascading with curl
+                    onClick={() => copyCode("router", `# Example: Test dynamic model cascading with curl
 curl -i https://api.billama.net/v1/chat/completions \\
   -H "Authorization: Bearer blm_live_your_key" \\
   -H "Content-Type: application/json" \\
@@ -366,7 +366,7 @@ curl -i https://api.billama.net/v1/chat/completions \\
                   </button>
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Billama 3.0 couples <strong className="text-white">NVIDIA NeMo Switchyard</strong> for intelligent model selection (cascade tiers from lightweight 3B to frontier 70B) with <strong className="text-white">Bifrost</strong> for sub-100µs transport and adaptive load balancing. Inspect the returned telemetry headers:
+                  Billama 3.0 couples intelligent model selection (cascade tiers from lightweight 3B to frontier 70B) with high-speed edge transport for sub-100µs delivery and adaptive load balancing. Inspect the returned telemetry headers:
                 </p>
                 <div className="p-4 rounded-xl bg-[#060911] border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto">
                   <pre>{`# 1. Dispatch request with model: "auto" or explicit model name
@@ -377,14 +377,14 @@ curl -i https://api.billama.net/v1/chat/completions \\
 
 # 2. Inspect real-time response headers stamped by Billama 3.0 Dual-Router:
 HTTP/1.1 200 OK
-X-Billama-Route-Target: SWITCHYARD_BIFROST
-X-Billama-Router-Engine: NeMo Switchyard → Bifrost (cascade)
-X-Billama-Switchyard-Model: llama3.2:3b
-X-Billama-Switchyard-Original-Model: llama3.3:70b
-X-Billama-Switchyard-Strategy: cascade
-X-Billama-Switchyard-Confidence: 0.94
-X-Billama-Switchyard-Cost-Savings: 85%
-X-Billama-Node-Id: bifrost-adaptive-lb-pod-2`}</pre>
+X-Billama-Route-Target: HYBRID_CASCADE
+X-Billama-Router-Engine: Adaptive Cascade → Edge Node
+X-Billama-Selected-Model: llama3.2:3b
+X-Billama-Original-Model: llama3.3:70b
+X-Billama-Routing-Strategy: cascade
+X-Billama-Routing-Confidence: 0.94
+X-Billama-Routing-Cost-Savings: 85%
+X-Billama-Node-Id: edge-adaptive-lb-pod-2`}</pre>
                 </div>
               </div>
             )}

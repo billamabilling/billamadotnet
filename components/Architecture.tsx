@@ -28,9 +28,9 @@ export default function Architecture() {
     },
     {
       num: 2,
-      title: "2. NeMo Switchyard + Bifrost Dual-Router",
+      title: "2. Intelligent AI Dual-Router",
       subtitle: "Intelligent Model Cascade & <100µs Transport",
-      desc: "NVIDIA NeMo Switchyard evaluates prompt complexity to route requests to the optimal model tier (e.g. lightweight 3B vs frontier 70B). Bifrost then executes sub-100µs transport, adaptive load balancing, and health checks across warm GPU nodes, with 2% consensus canary audits."
+      desc: "Our intelligent routing engine evaluates prompt complexity to route requests to the optimal model tier (e.g. lightweight 3B vs frontier 70B). The high-speed edge transport layer executes sub-100µs dispatch, adaptive load balancing, and health checks across warm GPU nodes, backed by 2% consensus canary audits."
     },
     {
       num: 3,
@@ -133,16 +133,16 @@ export default function Architecture() {
                                              │
                                              ▼
                       ┌──────────────────────────────────────────────┐
-                      │      NVIDIA NeMo Switchyard (Model Router)   │
-                      │  • Task Complexity Scan • Cascade / Judge    │
+                      │    Intelligent Model Cascading Engine        │
+                      │  • Task Complexity Scan • Cascade / Tiering  │
                       │  • Dynamic Model Choice • Cost-Optimization  │
                       └──────────────────────┬───────────────────────┘
                                              │
                                              ▼
                       ┌──────────────────────────────────────────────┐
-                      │      Bifrost High-Speed Gateway (<100µs)     │
+                      │     High-Speed Distributed Edge Gateway      │
                       │  • Adaptive Load Balancer• Health Checks     │
-                      │  • Cluster Mode (Leader) • Guardrails/PII    │
+                      │  • Cluster Mesh Routing  • Guardrails/PII    │
                       └──────────────────────┬───────────────────────┘
                                              │
              ┌───────────────────────────────┼───────────────────────────────┐
