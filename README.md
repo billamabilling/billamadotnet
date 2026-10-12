@@ -50,9 +50,9 @@ The exported site will be generated in the `./out` directory with `.nojekyll` an
 
 Deployment is automated via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml):
 
-1. On push to `main`, GitHub Actions runs `pnpm install` and `pnpm run build`.
-2. The `./out` static directory is bundled using `actions/upload-pages-artifact@v3`.
-3. The site is published automatically to GitHub Pages using `actions/deploy-pages@v4`.
+1. On push to `main`, GitHub Actions runs `pnpm install --frozen-lockfile` and `pnpm run build`.
+2. The `./out` static directory is bundled with `actions/upload-pages-artifact`, pinned to a commit SHA.
+3. The site is published to GitHub Pages with `actions/deploy-pages`, pinned to a commit SHA. Only that deploy job has `pages: write` and `id-token: write`.
 4. Custom domain `billama.net` is maintained via [`public/CNAME`](public/CNAME).
 
 ### Enabling GitHub Pages in Repository Settings:
