@@ -15,6 +15,7 @@ import {
   CreditCard,
   Zap
 } from "lucide-react";
+import LiveKeyGen from "@/components/LiveKeyGen";
 
 export const metadata = {
   title: "Documentation — Billama 3.0 Decentralized GPU Grid",
@@ -50,6 +51,9 @@ export default function DocsPage() {
                 <div className="space-y-1 font-mono">
                   <a href="#quickstart" className="block py-1.5 px-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">
                     1. Quickstart &amp; Overview
+                  </a>
+                  <a href="#sandbox" className="block py-1.5 px-2 rounded-lg text-emerald-400 hover:bg-slate-800 hover:text-emerald-300 font-semibold bg-emerald-500/10 border border-emerald-500/20 mb-1">
+                    API Key Sandbox
                   </a>
                   <a href="#billama-sdk" className="block py-1.5 px-2 rounded-lg text-cyan-300 hover:bg-slate-800 hover:text-cyan-200 font-semibold">
                     2. Official TypeScript SDK (@billama/sdk)
@@ -116,6 +120,11 @@ export default function DocsPage() {
                     <code className="text-emerald-400 font-mono">82% Net Revenue</code>
                   </div>
                 </div>
+              </section>
+
+              {/* Section 1.5 Sandbox */}
+              <section id="sandbox" className="space-y-4 pt-8 border-t border-slate-800">
+                <LiveKeyGen />
               </section>
 
               {/* Section 2 */}
